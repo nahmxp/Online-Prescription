@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 11:19 PM
+-- Generation Time: Jan 02, 2023 at 07:55 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -35,6 +35,15 @@ CREATE TABLE `medicines` (
   `instruction` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `medicines`
+--
+
+INSERT INTO `medicines` (`id`, `name`, `indication`, `usages`, `instruction`) VALUES
+(5, 'Acetazolamide', 'Diamox, Eytazox', 'For glaucoma', '1 times a day'),
+(6, 'Aciclovir', 'eye ointme', '2 drops', '2 times a day'),
+(7, 'Atropine', '(Minims Atropine)', 'eye drops', '3 times a day');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +58,15 @@ CREATE TABLE `patientinfo` (
   `address` varchar(100) NOT NULL,
   `number` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientinfo`
+--
+
+INSERT INTO `patientinfo` (`id`, `name`, `gender`, `age`, `address`, `number`) VALUES
+(3, 'Novera', 'F', 28, 'dhaka', 1111100000),
+(4, 'Xavi', 'M', 24, 'spain', 2147483647),
+(5, 'Salah', 'M', 22, 'Egypt', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -66,6 +84,16 @@ CREATE TABLE `prescribedmedicines` (
   `med4` int(11) NOT NULL,
   `med5` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prescribedmedicines`
+--
+
+INSERT INTO `prescribedmedicines` (`id`, `prescribedby`, `prescribedto`, `med1`, `med2`, `med3`, `med4`, `med5`) VALUES
+(2, 1, 2, 1, 4, 0, 0, 1),
+(3, 1, 1, 1, 4, 0, 0, 0),
+(4, 1, 4, 5, 0, 6, 0, 0),
+(5, 1, 5, 0, 7, 0, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -86,6 +114,14 @@ CREATE TABLE `profile` (
   `status` enum('1','0') COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`id`, `username`, `name`, `email`, `phonenumber`, `specialist`, `address`, `file_name`, `uploaded_on`, `status`) VALUES
+(1, 'admin', 'Admin', 'admin@doc.com', 2147483647, 'eye', 'dhaka', 'Female-Doctor-Icon-e1653610071178.png', '2023-01-02 12:34:41', '1'),
+(2, 'haland', 'Erling Haaland', '20goals@epl.com', 2147483647, 'foot', 'Norway', 'images.jpg', '2023-01-02 12:54:33', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -103,7 +139,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
-(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(2, 'admin2', '1c142b2d01aa34e9a36bde480645a57fd69e14155dacfab5a3f9257b77fdc8d8'),
+(3, 'admin3', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(4, 'haland', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 --
 -- Indexes for dumped tables
@@ -148,31 +187,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `medicines`
 --
 ALTER TABLE `medicines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `patientinfo`
 --
 ALTER TABLE `patientinfo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `prescribedmedicines`
 --
 ALTER TABLE `prescribedmedicines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
